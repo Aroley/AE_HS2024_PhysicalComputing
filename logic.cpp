@@ -12,13 +12,14 @@
 #define pinS2 4     
 #define pinS1 2     
 #define pinS0 1     
+
 #define KEY_BACKSPACE 0xB2 
 #define KEY_SPACE 0x2C 
 #define KEY_1 0x1E 
 #define KEY_2 0x1F 
 #define KEY_DOT 0x37 
 #define KEY_SLASH 0x38 
-#define KEY_LEFTSHIFT 0xE1 
+#define KEY_LEFT_SHIFT 0xE1 
 
 #define KEY_A 0x04
 #define KEY_B 0x05
@@ -50,12 +51,12 @@
 USBHIDKeyboard Keyboard;
 
 // Arrays containing 8 keycodes each:
-unsigned char chipArrayA[] = {KEY_BACKSPACE, KEY_1, KEY_2, KEY_SLASH, KEY_DOT, KEY_SPACE, KEY_LEFTSHIFT, KEY_A}; // KEY_1, KEY_2, KEY_SLASH need LEFTSHIFT pressed
-unsigned char chipArrayB[] = {KEY_B, KEY_C, KEY_D, KEY_E, KEY_F, KEY_G, KEY_H, KEY_I};
-unsigned char chipArrayC[] = {KEY_J, KEY_K, KEY_L, KEY_M, KEY_N, KEY_O, KEY_P, KEY_Q};
-unsigned char chipArrayD[] = {KEY_R, KEY_S, KEY_T, KEY_U, KEY_V, KEY_W, KEY_X, KEY_Y};
+const uint8_t chipArrayA[] = {KEY_BACKSPACE, KEY_1, KEY_2, KEY_SLASH, KEY_DOT, KEY_SPACE, KEY_A, KEY_B}; // KEY_1, KEY_2, KEY_SLASH need LEFTSHIFT pressed
+const uint8_t chipArrayB[] = {KEY_C, KEY_D, KEY_E, KEY_F, KEY_G, KEY_H, KEY_I, KEY_J};
+const uint8_t chipArrayC[] = {KEY_K, KEY_L, KEY_M, KEY_N, KEY_O, KEY_P, KEY_Q, KEY_R};
+const uint8_t chipArrayD[] = {KEY_S, KEY_T, KEY_U, KEY_V, KEY_W, KEY_X, KEY_Y, KEY_Z};
 
-unsigned char currentKey;
+unsigned uint8_t currentKey;
 
 
 void setup() {
