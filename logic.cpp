@@ -14,10 +14,17 @@
 USBHIDKeyboard Keyboard;
 
 // Arrays containing keys
-char chipArrayA[] = {'H','<', 'C', '?', 'E', 'G', 'S', 'V'};
-char chipArrayB[] = {'X', 'Q', '.', 'F', '@', 'R', 'N', 'B'};
-char chipArrayC[] = {'Z', 'Y', 'K', '!', 'W', 'D', 'A', 'O'};
-char chipArrayD[] = {'P', 'T', 'M', 'U', 'I', 'J', ' ', 'L'};
+char chipArrayA[] = {'!','N', ' ', 'Y', 'E', 'G', 'Q', 'J'};
+char chipArrayB[] = {'?', 'P', '.', 'F', '@', '<', 'M', 'X'};
+char chipArrayC[] = {'W', 'Z', 'U', 'I', 'R', 'S', 'D', 'H'};
+char chipArrayD[] = {'A', 'T', 'V', 'B', 'O', 'C', 'L', 'K'};
+
+// OG
+/*
+char chipArrayA[] = {'backspace','!', '?', ' ', '.', '@', 'A', 'B'};
+char chipArrayB[] = {'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};
+char chipArrayC[] = {'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R'};
+char chipArrayD[] = {'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};*/
 
 char currentKey;
 
@@ -30,7 +37,6 @@ int currentTimeD = 0;
 void setup() {
   Serial.begin(9600);
 
-  //Set pins D0, D1, and D2 as digital outs
   pinMode(pinA, OUTPUT);
   pinMode(pinB, OUTPUT);
   pinMode(pinC, OUTPUT);
@@ -57,17 +63,7 @@ void loop() {
     if(currentTimeA >= timeThreshold){
       currentTimeA = 0;
       
-    if (chipA==1) {
-    Keyboard.press(KEY_BACKSPACE);
-    delay(100);
-    Keyboard.releaseAll();
-    Serial.println(currentKey);
-    Serial.println(chipA);
-    }else{
-    Keyboard.print(currentKey);
-    Serial.println(currentKey);
-    Serial.println(chipA);
-    }
+    Keyboard.println(currentKey);
     }
    
 
@@ -88,9 +84,17 @@ void loop() {
     if(currentTimeB >= timeThreshold){
       currentTimeB = 0;
       
+    if (currentKey=='<') {
+    Keyboard.press(KEY_BACKSPACE);
+    delay(100);
+    Keyboard.releaseAll();
+    Serial.println(currentKey);
+    Serial.println(chipB);
+    }else{
     Keyboard.print(currentKey);
     Serial.println(currentKey);
     Serial.println(chipB);
+    }
 
     }
        /*Serial.print("chipB pin : ");
